@@ -21,7 +21,6 @@
 ## Usage
 
 - Assign specific availability slots to individual products in the product editor.
-- Define date-specific closures for holidays or special events.
 - Your products will now be accessible only during the hours you've specified.
 
 ## Contributing
