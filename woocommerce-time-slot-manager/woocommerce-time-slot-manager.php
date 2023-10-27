@@ -11,29 +11,35 @@ License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 Plugin URI: https://github.com/hmtechnology/woocommerce-time-slot-manager
 */
 
-// Add two custom fields for opening and closing times
+// Add two custom fields for opening and closing times with select options
 function add_opening_closing_time_fields() {
-    woocommerce_wp_text_input(
+    $time_options = array();
+
+    // Generate select options for 30-minute intervals
+    for ($hour = 0; $hour < 24; $hour++) {
+        for ($minute = 0; $minute < 60; $minute += 30) {
+            $time = sprintf('%02d:%02d', $hour, $minute);
+            $time_options[$time] = $time;
+        }
+    }
+
+    woocommerce_wp_select(
         array(
             'id' => '_opening_time',
             'label' => 'Opening Time',
             'desc_tip' => true,
-            'description' => 'Enter the opening time (format: HH:MM)',
-            'custom_attributes' => array(
-                'step' => '300',
-            ),
+            'description' => 'Select the opening time',
+            'options' => $time_options,
         )
     );
 
-    woocommerce_wp_text_input(
+    woocommerce_wp_select(
         array(
             'id' => '_closing_time',
             'label' => 'Closing Time',
             'desc_tip' => true,
-            'description' => 'Enter the closing time (format: HH:MM)',
-            'custom_attributes' => array(
-                'step' => '300',
-            ),
+            'description' => 'Select the closing time',
+            'options' => $time_options,
         )
     );
 }
@@ -47,6 +53,7 @@ function save_opening_closing_time_fields($product) {
     $product->update_meta_data('_closing_time', $closing_time);
 }
 add_action('woocommerce_admin_process_product_object', 'save_opening_closing_time_fields');
+
 
 // Check the time when purchasing
 function check_availability_time($purchasable, $product) {
