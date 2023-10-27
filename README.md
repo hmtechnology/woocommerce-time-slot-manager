@@ -6,11 +6,7 @@
 
 ## Features
 
-- **Customizable Store Hours**: Define unique opening and closing hours for your online store, matching your business hours perfectly.
-
 - **Product-Specific Availability**: Set individual product availability based on your chosen time slots, ensuring certain products are accessible only when you want.
-
-- **Flexible Time Formats**: Use both 24-hour and 12-hour time formats to create time slots that fit your needs.
 
 - **Enhanced User Experience**: Provide a seamless shopping experience by clearly indicating product availability based on real-time store hours.
 
